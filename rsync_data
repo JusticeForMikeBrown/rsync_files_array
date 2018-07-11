@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# vars
+user="sysadmin"
+dir="/home/$user/copy"
+src="$dir/source"
+dst="$dir/dest"
+dst_server="dst_server"
+
+# read array
+IFS=$'\n' read -d '' -r -a s < $src
+IFS=$'\n' read -d '' -r -a d < $dst
+
+# copy files with array
+for ((i=0;i<${#s[@]};i++))
+do
+        rsync -zarv --prune-empty-dirs -O --progress --include "*/" root@$dst_server:${s[$i]} ${d[$i]}
+done
+
