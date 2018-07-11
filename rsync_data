@@ -3,11 +3,11 @@
 # vars
 user="sysadmin"
 dir="/home/$user/copy"
-src="$dir/source"
-dst="$dir/dest"
+src="$dir/source_data"
+dst="$dir/dest_data"
 dst_server="dst_server"
 
-# read array
+# read arrays
 IFS=$'\n' read -d '' -r -a s < $src
 IFS=$'\n' read -d '' -r -a d < $dst
 
